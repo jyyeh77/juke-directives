@@ -26,6 +26,7 @@
     <script src="/js/playlist/playlist.factory.js" defer></script>
     <script src="/js/playlist/playlist.controllers.js" defer></script>
     <script src="/js/player/player.directive.js" defer></script>
+    <script src="/js/song/songlist.directive.js" defer></script>
 </head>
 <body ng-app="juke">
 <div id="main" class="container-fluid">
@@ -41,25 +42,6 @@
 
     <footer>
         <jk-player></jk-player>
-        <!--<div ng-show="getCurrentSong()" ng-controller="PlayerCtrl">-->
-        <!--<div class="pull-left">-->
-        <!--<button class="btn btn-default" ng-click="previous()">-->
-        <!--<span class="glyphicon glyphicon-step-backward"></span>-->
-        <!--</button>-->
-        <!--<button class="btn btn-default" ng-click="toggle()">-->
-        <!--<span class="glyphicon"-->
-        <!--ng-class="{'glyphicon-pause': isPlaying(), 'glyphicon-play': !isPlaying()}"></span>-->
-        <!--</button>-->
-        <!--<button class="btn btn-default" ng-click="next()">-->
-        <!--<span class="glyphicon glyphicon-step-forward"></span>-->
-        <!--</button>-->
-        <!--</div>-->
-        <!--<div class="bar">-->
-        <!--<div class="progress" ng-click="handleProgressClick($event)">-->
-        <!--<div class="progress-bar" ng-style="{width: getPercent() + '%'}"></div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
     </footer>
 
 </div>
