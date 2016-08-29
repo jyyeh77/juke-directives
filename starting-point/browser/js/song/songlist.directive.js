@@ -1,21 +1,27 @@
 'use strict'
 
-juke.directive('songList', ['PlayerFactory', function(){
+juke.directive('songList', function(PlayerFactory){
 	return {
 		restrict: 'E',
 		templateUrl: '/js/song/songlist.directive.template.html',
 		scope: {
 			data: "="
 		},
-		link: function(scope, PlayerFactory){
+		transclude: true,
+		link: function(scope){
 			scope.songs = scope.data;
 			scope.getCurrentSong = PlayerFactory.getCurrentSong;
 			scope.next = PlayerFactory.next;
 			scope.previous = PlayerFactory.previous;
 			scope.isPlaying = PlayerFactory.isPlaying;
-			scope.toggle = function () {
-				if ( PlayerFactory.isPlaying() ) PlayerFactory.pause();
-				else PlayerFactory.resume();
+			scope.toggle = function (song) {
+				if (song !== PlayerFactory.getCurrentSong()) {
+				  PlayerFactory.start(song, $scope.album.songs);
+				} else if ( PlayerFactory.isPlaying() ) {
+				  PlayerFactory.pause();
+				} else {
+				  PlayerFactory.resume();
+				}
 			};
 
 			scope.getPercent = function () {
@@ -27,4 +33,4 @@ juke.directive('songList', ['PlayerFactory', function(){
 			};
 		}
 	}
-}])
+})
