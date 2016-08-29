@@ -7,7 +7,6 @@ juke.directive('songList', function(PlayerFactory){
 		scope: {
 			data: "="
 		},
-		transclude: true,
 		link: function(scope){
 			scope.songs = scope.data;
 			scope.getCurrentSong = PlayerFactory.getCurrentSong;
@@ -16,14 +15,14 @@ juke.directive('songList', function(PlayerFactory){
 			scope.isPlaying = PlayerFactory.isPlaying;
 			scope.toggle = function (song) {
 				if (song !== PlayerFactory.getCurrentSong()) {
-				  PlayerFactory.start(song, $scope.album.songs);
+				  PlayerFactory.start(song, scope.songs);
+					console.log("Current Song in Player Factory: ", PlayerFactory.getCurrentSong());
 				} else if ( PlayerFactory.isPlaying() ) {
 				  PlayerFactory.pause();
 				} else {
 				  PlayerFactory.resume();
 				}
 			};
-
 			scope.getPercent = function () {
 				return PlayerFactory.getProgress() * 100;
 			};

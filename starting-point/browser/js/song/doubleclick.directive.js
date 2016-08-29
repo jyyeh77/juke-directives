@@ -7,11 +7,7 @@ juke.directive('doubleClick', function(){
 			doubleClick: '&',
 		},
 		link: function(scope, element){
-
 			element.on('dblclick', (function(){
-				// console.log(element)
-				// console.log('scope.$parent:' , scope.$parent);
-				// console.log('scope.$parent.$parent:' , scope.$parent.$parent)
 				scope.doubleClick();
 			}))
 		}
